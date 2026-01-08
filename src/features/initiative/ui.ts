@@ -10,7 +10,6 @@ function render(state: InitiativeState, io: IO) {
   clearScreen();
   line(io, `Initiative — ${state.encounter.name}`);
   line(io, `Round: ${state.round}   Started: ${state.started ? "Yes" : "No"}`);
-  line(io, "");
 
   const byId = new Map(state.encounter.combatants.map((c) => [c.id, c]));
   if (state.order.length > 0) {
