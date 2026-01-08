@@ -13,7 +13,7 @@ export function createInitialState(encounterName?: string): InitiativeState {
 
 export function addCombatant(
   state: InitiativeState,
-  input: { name: string; kind?: Combatant["kind"]; initiativeMod?: number; hpMax?: number }
+  input: { name: string; kind?: Combatant["kind"]; faction?: Combatant["faction"]; initiativeMod?: number; hpMax?: number }
 ): InitiativeState {
   const mod = input.initiativeMod ?? 0;
   const hpMax = input.hpMax ?? 10;
@@ -27,6 +27,9 @@ export function addCombatant(
     initiativeTotal: mod, // until rolled
     hpCurrent: hpMax,
     hpMax,
+    faction: input.faction ?? "enemy",
+
+    
   };
 
   return {
@@ -100,4 +103,26 @@ export function removeCombatant(state: InitiativeState, id: Id): InitiativeState
   const order = state.order.filter((x) => x !== id);
   const activeIndex = Math.min(state.activeIndex, Math.max(0, order.length - 1));
   return { ...state, encounter: { ...state.encounter, combatants }, order, activeIndex };
+}
+export function importCombatants(
+  state: InitiativeState,
+  saved: Array<Omit<Combatant, "id" | "initiativeRoll" | "initiativeTotal">>
+): InitiativeState {
+  let next = state;
+  for (const s of saved) {
+    next = addCombatant(next, {
+      name: s.name,
+      kind: s.kind,
+      faction: s.faction,
+      initiativeMod: s.initiativeMod,
+      hpMax: s.hpMax,
+    });
+    // set current HP (optional)
+    const added = next.encounter.combatants[next.encounter.combatants.length - 1];
+    if (added) {
+      const desired = (s as any).hpCurrent ?? s.hpMax;
+      added.hpCurrent = Math.max(0, Math.min(s.hpMax, desired));
+    }
+  }
+  return next;
 }

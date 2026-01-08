@@ -1,0 +1,22 @@
+{
+  "name": "2 Vampires (test)",
+  "faction": "enemy",
+  "combatants": [
+    {
+      "name": "Vampire 1",
+      "kind": "npc",
+      "faction": "enemy",
+      "initiativeMod": 3,
+      "hpCurrent": 64,
+      "hpMax": 64
+    },
+    {
+      "name": "Vampire 2",
+      "kind": "npc",
+      "faction": "enemy",
+      "initiativeMod": 3,
+      "hpCurrent": 68,
+      "hpMax": 68
+    }
+  ]
+}

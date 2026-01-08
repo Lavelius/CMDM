@@ -2,19 +2,6 @@ export type Id = string;
 
 export type CombatantKind = "pc" | "npc" | "monster";
 
-export type Combatant = {
-  id: Id;
-  name: string;
-  kind: CombatantKind;
-
-  initiativeMod: number;
-  initiativeRoll: number | null;
-  initiativeTotal: number;
-
-  hpCurrent: number;
-  hpMax: number;
-};
-
 export type Encounter = {
   id: Id;
   name: string;
@@ -27,4 +14,20 @@ export type InitiativeState = {
   activeIndex: number;
   round: number;
   started: boolean;
+};
+
+export type Faction = "party" | "enemy";
+
+export type Combatant = {
+  id: Id;
+  name: string;
+  kind: CombatantKind;
+  faction: Faction; // <-- add this
+
+  initiativeMod: number;
+  initiativeRoll: number | null;
+  initiativeTotal: number;
+
+  hpCurrent: number;
+  hpMax: number;
 };

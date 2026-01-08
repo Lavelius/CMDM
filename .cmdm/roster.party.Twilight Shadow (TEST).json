@@ -1,0 +1,46 @@
+{
+  "name": "Twilight Shadow (TEST)",
+  "faction": "party",
+  "combatants": [
+    {
+      "name": "Hadri",
+      "kind": "npc",
+      "faction": "party",
+      "initiativeMod": 4,
+      "hpCurrent": 50,
+      "hpMax": 50
+    },
+    {
+      "name": "Throkka",
+      "kind": "npc",
+      "faction": "party",
+      "initiativeMod": 3,
+      "hpCurrent": 64,
+      "hpMax": 64
+    },
+    {
+      "name": "Garith",
+      "kind": "npc",
+      "faction": "party",
+      "initiativeMod": 2,
+      "hpCurrent": 50,
+      "hpMax": 50
+    },
+    {
+      "name": "quin",
+      "kind": "npc",
+      "faction": "party",
+      "initiativeMod": 4,
+      "hpCurrent": 40,
+      "hpMax": 40
+    },
+    {
+      "name": "Lucian",
+      "kind": "npc",
+      "faction": "party",
+      "initiativeMod": 4,
+      "hpCurrent": 50,
+      "hpMax": 50
+    }
+  ]
+}
